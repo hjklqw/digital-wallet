@@ -1,0 +1,12 @@
+@import 'src/assets/vars.scss';
+
+.page-header {
+  background: $almost-white;
+  overflow: hidden;
+  padding: 1em 20vw;
+}
+
+.page-contents {
+  margin-top: 2em;
+  padding: 1em;
+}

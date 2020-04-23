@@ -1,0 +1,98 @@
+@import 'src/assets/vars.scss';
+
+.main-layout {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  header {
+    background: $almost-black;
+    display: flex;
+
+    .header-logo {
+      color: white;
+      font-size: 2em;
+      padding: 0 1em;
+      font-variant: small-caps;
+      margin-top: 0.56em;
+
+      .header-link {
+        margin: 0;
+        padding: 0;
+
+        svg {
+          margin-left: 10px;
+          margin-right: 0;
+        }
+
+        &::after {
+          margin-top: 0.5rem;
+        }
+      }
+    }
+
+    .header-links {
+      display: flex;
+      flex: 1;
+      justify-content: space-between;
+    }
+  }
+
+  main {
+    flex: 1;
+    background: #bebfb0;
+  }
+
+  footer {
+    background: $almost-white;
+    padding: 0.5em;
+    text-align: center;
+  }
+}
+
+.header-link {
+  display: inline-block;
+  color: white;
+  margin: 0 1em;
+  padding: 2em 0 0;
+
+  a {
+    color: inherit;
+  }
+
+  svg {
+    margin-right: 10px;
+  }
+
+  &::after {
+    @include bottom-bar;
+    content: "";
+    width: 0%;
+    margin-top: 1.1rem;
+  }
+
+  &.active {
+    font-weight: bold;
+    &::after {
+      width: 100%;
+    }
+  }
+
+  &:not(.active):hover {
+    @include fake-bold(0.25px, white, 0.1px);
+    &::after {
+      transition: all 0.35s;
+      width: 100%;
+    }
+  }
+}
+
+.footer-link {
+  color: gray;
+  margin: 0 1em;
+  font-size: 0.9em;
+
+  &:hover {
+    @include fake-bold(0.2px, gray, 0.2px);
+  }
+}

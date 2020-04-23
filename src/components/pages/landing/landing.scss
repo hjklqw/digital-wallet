@@ -1,0 +1,44 @@
+@import 'src/assets/vars.scss';
+
+.balance-text {
+  font-weight: bold;
+  font-size: 5em;
+  color: $dark-emphasis-color;
+}
+
+.action-link {
+  display: block;
+  width: 500px;
+  max-width: 80vw;
+  background: $almost-black;
+  margin: 1em auto;
+
+  &::after {
+    @include bottom-bar;
+    content: "";
+    width: 0%;
+  }
+
+  &:hover {
+    @include fake-bold(0.3px, white);
+    &::after {
+      transition: all 0.35s;
+      width: 100%;
+    }
+  }
+
+  .action-link-contents {
+    display: flex;
+    color: white;
+    padding: 3em;
+    font-size: 1.5em;
+
+    svg {
+      margin-right: 0.5em;
+    }
+  
+    span {
+      display: block;
+    }
+  }
+}

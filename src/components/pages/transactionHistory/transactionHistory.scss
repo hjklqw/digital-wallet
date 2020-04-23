@@ -1,0 +1,29 @@
+@import 'src/assets/vars.scss';
+
+.transaction {
+  @include top-bordered-block;
+  margin-bottom: 0.5rem;
+
+  .transaction-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.8em;
+  }
+
+  .transaction-value {
+    display: block;
+    font-size: 1.25em;
+    font-weight: bold;
+    color: $dark-emphasis-color;
+    margin-bottom: 2px;
+  }
+
+  .prefix {
+    color: gray;
+    font-style: italic;
+  }
+
+  .transaction-date {
+    color: gray;
+  }
+}

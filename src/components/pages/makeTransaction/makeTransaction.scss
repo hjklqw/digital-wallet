@@ -1,0 +1,16 @@
+@import 'src/assets/vars.scss';
+
+.fee-description {
+  display: block;
+  font-size: 0.9em;
+  margin: 1px 0;
+
+  .transaction-type-text {
+    font-style: italic;
+  }
+
+  .transaction-fee-value-text {
+    font-weight: bold;
+    color: $dark-emphasis-color;
+  }
+}

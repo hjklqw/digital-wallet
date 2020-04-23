@@ -1,0 +1,22 @@
+.callout {
+  padding: 1em;
+  margin: 1em 0;
+  color: black;
+
+  &.info {
+    background: #c7e1ea;
+  }
+
+  &.error {
+    background: #a22020;
+    color: white;
+  }
+
+  &.warning {
+    background: #f7e1ad;
+  }
+
+  svg {
+    margin-right: 0.5em;
+  }
+}

@@ -1,0 +1,28 @@
+$highlight-color: #e8ff00;
+$dark-emphasis-color: #677105;
+$almost-black: #313131;
+$almost-white: #eaeaea;
+
+@mixin bottom-bar {
+  display: block;
+  width: 100%;
+  height: 5px;
+  background: $highlight-color;
+}
+
+@mixin fake-bold($amount, $color, $blur: 0) {
+  text-shadow:
+    $amount $amount $blur $color,
+    -$amount -$amount $blur $color,
+    -$amount $amount $blur $color,
+    $amount -$amount $blur $color;
+}
+
+@mixin top-bordered-block {
+  background: $almost-white;
+  padding: 1em 2em 1.5em 1em;
+  width: 800px;
+  max-width: 80vw;
+  margin: 0 auto;
+  border-top: 5px solid $almost-black;
+}

@@ -1,0 +1,23 @@
+.radio-group {
+
+  .radio-label {
+    padding: 1em;
+    display: inline-block;
+    cursor: pointer;
+    background: white;
+    border: 1px solid #d5d5d5;
+    font-size: 0.8em;
+
+    &:not(:last-child) {
+      border-right: none;
+    }
+  }
+
+  input {
+    display: none;
+
+    &:checked + .radio-label {
+      font-weight: bold;
+    }
+  }
+}
