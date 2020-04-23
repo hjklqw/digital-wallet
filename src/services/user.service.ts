@@ -25,7 +25,7 @@ export async function createUser(postData: UserModel) {
   }
   function res() {
     if (postDataIsValid()) {
-      postData.id = database.user.length; // This should come from the server
+      postData.id = database.user.length + 1; // This should come from the server
       database.user.push(postData);
       const wallet: WalletModel = {
         customerId: postData.id,

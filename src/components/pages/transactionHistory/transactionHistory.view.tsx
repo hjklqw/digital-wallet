@@ -41,7 +41,10 @@ type Props = {
 
 const TransactionHistoryPage = ({ transactions }: Props) => (
   <RegisteredPageLayout headerText="Transaction History" pageDescription="View your previous transactions.">
-    {transactions.map((t, i) => <TransactionHistoryItem model={t} key={i} />)}
+    {(transactions.length > 0) ?
+      transactions.map((t, i) => <TransactionHistoryItem model={t} key={i} />) :
+      <span className="no-transactions-message">There are no transactions to display.</span>
+    }
   </RegisteredPageLayout>
 );
 

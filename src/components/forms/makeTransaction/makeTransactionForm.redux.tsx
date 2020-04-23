@@ -1,5 +1,6 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector, connect } from 'react-redux';
+import { reduxForm, formValueSelector } from 'redux-form';
 
 import { useHistory } from 'react-router-dom';
 import { TRANSACTION_HISTORY as TRANSACTION_HISTORY_ROUTE } from '../../../assets/route.constants';
@@ -7,7 +8,7 @@ import { TRANSACTION_HISTORY as TRANSACTION_HISTORY_ROUTE } from '../../../asset
 import { AppState } from '../../../reducers/app.state';
 import ErrorCallout from '../../common/callout/error';
 
-import MakeTransactionForm from './makeTransactionForm.view';
+import MakeTransactionForm, { Props as MakeTransactionFormProps } from './makeTransactionForm.view';
 import { TransactionModel } from '../../../models/transaction.model';
 import { createTransaction } from '../../../services/transaction.service';
 import { createTransactionFailure } from '../../../actions/transaction.actions';
@@ -15,11 +16,24 @@ import { TransactionType } from '../../../models/transactionType.enum';
 import { FeeModel } from '../../../models/fee.model';
 import { WalletModel } from '../../../models/wallet.model';
 
+import validate from './validate';
 import calculateFee from './calculateFee';
 
 type Props = {
   fees: FeeModel[]
 }
+
+const FORM_NAME = 'makeTransaction';
+
+const ReduxForm = reduxForm<TransactionModel, MakeTransactionFormProps>({
+  form: FORM_NAME,
+  validate: validate
+})(MakeTransactionForm);
+
+const selector = formValueSelector(FORM_NAME);
+const ConnectedForm = connect(
+  state => ({ currentTransactionType: selector(state, 'type') })
+)(ReduxForm);
 
 const ConnectedMakeTransactionForm = ({ fees }: Props) => {
 
@@ -50,7 +64,7 @@ const ConnectedMakeTransactionForm = ({ fees }: Props) => {
   return (
     <>
       {transactionError && <ErrorCallout error={transactionError} suffixText="Please try again." />}
-      <MakeTransactionForm
+      <ConnectedForm
         onSubmit={onSubmit}
         currentBalance={customerWallet?.balance || 0}
         numTransactions={customerWallet?.numTransactions || 0}

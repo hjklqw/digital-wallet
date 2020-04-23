@@ -4,7 +4,7 @@ import { AppState } from '../../reducers/app.state';
 import MainLayout from './mainLayout.view';
 import { logoutUser } from '../../actions/user.actions';
 
-const ConnectedMainLayout: React.FC = (props) => {
+const ConnectedMainLayout: React.SFC = (props) => {
   const isLoggedIn = useSelector((state: AppState) => (state.user.user != null));
 
   const dispatch = useDispatch();

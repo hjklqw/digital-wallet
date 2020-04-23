@@ -1,30 +1,30 @@
 import React from 'react';
-import { Field, InjectedFormProps, reduxForm, formValueSelector } from 'redux-form';
+import { Field, InjectedFormProps } from 'redux-form';
 
-import validate from './validate';
 import InputWithError from '../../common/inputWithError';
 import RadioGroupWithError from '../../common/radioGroupWithError';
 import { RadioOptionProps } from '../../common/radioGroupWithError/radioGroupWithError.view';
 import { TransactionType } from '../../../models/transactionType.enum';
 import { TransactionModel } from '../../../models/transaction.model';
 import { FeeModel } from '../../../models/fee.model';
-import { connect } from 'react-redux';
 import calculateFee from './calculateFee';
 
-type Props = {
+export type Props = {
   numTransactions: number,
   currentBalance: number,
   fees: FeeModel[],
   currentTransactionType?: TransactionType
 };
 
-const MakeTransactionForm: React.FC<Props & InjectedFormProps<TransactionModel, Props>> = (props) => {
+const MakeTransactionForm: React.SFC<Props & InjectedFormProps<TransactionModel, Props>> = (props) => {
+
+  const currentTransactionType = props.currentTransactionType || (props.initialValues.type as TransactionType);
 
   const currentFee = calculateFee(
     props.numTransactions,
     props.currentBalance,
     props.fees,
-    props.currentTransactionType || (props.initialValues.type as TransactionType));
+    currentTransactionType);
 
   return (
     <form onSubmit={props.handleSubmit}>
@@ -47,6 +47,7 @@ const MakeTransactionForm: React.FC<Props & InjectedFormProps<TransactionModel, 
             type="number"
             normalize={(value: number) => {
               if (value < 0) return 0;
+              if (currentTransactionType === TransactionType.AddFunds) return value;
               const maximumBalanceMinusFee = props.currentBalance - currentFee;
               if (value > maximumBalanceMinusFee) return maximumBalanceMinusFee;
               return value;
@@ -55,7 +56,7 @@ const MakeTransactionForm: React.FC<Props & InjectedFormProps<TransactionModel, 
         </div>
       </section>
       <section>
-        <h1>Destination</h1>
+        <h1>{((currentTransactionType === TransactionType.WithdrawFunds) || (currentTransactionType === TransactionType.Buy)) ? 'Source' : 'Destination'}</h1>
         <div>
           <label htmlFor="destinationName">Name</label>
           <Field name="destinationName" component={InputWithError} type="text" />
@@ -69,16 +70,4 @@ const MakeTransactionForm: React.FC<Props & InjectedFormProps<TransactionModel, 
   );
 };
 
-const FORM_NAME = 'makeTransaction';
-
-const ReduxForm = reduxForm<TransactionModel, Props>({
-  form: FORM_NAME,
-  validate: validate
-})(MakeTransactionForm);
-
-const selector = formValueSelector(FORM_NAME);
-const ConnectedForm = connect(
-  state => ({ currentTransactionType: selector(state, 'type') })
-)(ReduxForm);
-
-export default ConnectedForm;
+export default MakeTransactionForm;

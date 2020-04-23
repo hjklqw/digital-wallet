@@ -1,18 +1,17 @@
 import React from 'react';
-import { Field, InjectedFormProps, reduxForm } from 'redux-form';
+import { Field, InjectedFormProps } from 'redux-form';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 import InputWithError from '../../common/inputWithError';
 import { LoginFormModel } from './loginForm.model';
-import validate from './validate';
 
-type Props = {
+export type Props = {
   isLoading: boolean
 }
 
-const LoginForm: React.FC<Props & InjectedFormProps<LoginFormModel, Props>> = (props) => (
+const LoginForm: React.SFC<Props & InjectedFormProps<LoginFormModel, Props>> = (props) => (
   <form onSubmit={props.handleSubmit}>
     <section>
       <div>
@@ -31,7 +30,4 @@ const LoginForm: React.FC<Props & InjectedFormProps<LoginFormModel, Props>> = (p
   </form>
 );
 
-export default reduxForm<LoginFormModel, Props>({
-  form: 'login',
-  validate: validate
-})(LoginForm);
+export default LoginForm;

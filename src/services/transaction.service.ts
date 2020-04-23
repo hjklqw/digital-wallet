@@ -18,7 +18,7 @@ export async function createTransaction(postData: TransactionModel) {
   }
   function res() {
     if (postDataIsValid()) {
-      postData.id = database.transaction.length; // This should all come from the server
+      postData.id = database.transaction.length + 1; // This should all come from the server
       const walletIndex = database.wallet.findIndex(w => w.customerId === postData.customerId);
       database.wallet[walletIndex].numTransactions++;
       const balanceChange = postData.value - postData.fee;

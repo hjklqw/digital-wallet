@@ -1,5 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { reduxForm } from 'redux-form';
 
 import { Redirect } from 'react-router-dom';
 import * as Routes from '../../../assets/route.constants';
@@ -10,7 +11,13 @@ import { UserState } from '../../../reducers/user.state';
 import { AppState } from '../../../reducers/app.state';
 import ErrorCallout from '../../common/callout/error';
 
-import LoginForm from './loginForm.view';
+import LoginForm, { Props as LoginFormProps } from './loginForm.view';
+import validate from './validate';
+
+const ReduxForm = reduxForm<LoginFormModel, LoginFormProps>({
+  form: 'login',
+  validate: validate
+})(LoginForm);
 
 const ConnectedLoginForm = () => {
 
@@ -28,7 +35,7 @@ const ConnectedLoginForm = () => {
   return (
     <>
       {(userState.error) && <ErrorCallout error={userState.error} suffixText="Please try again." />}
-      <LoginForm onSubmit={onSubmit} isLoading={userState.isLoading} />
+      <ReduxForm onSubmit={onSubmit} isLoading={userState.isLoading} />
     </>
   );
 };

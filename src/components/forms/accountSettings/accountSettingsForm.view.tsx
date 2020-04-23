@@ -1,11 +1,10 @@
 import React from 'react';
-import { Field, InjectedFormProps, reduxForm } from 'redux-form';
+import { Field, InjectedFormProps } from 'redux-form';
 
-import validate from './validate';
 import InputWithError from '../../common/inputWithError';
 import { UserModel } from '../../../models/user.model';
 
-const AccountSettingsForm: React.FC<InjectedFormProps<UserModel>> = (props) => (
+const AccountSettingsForm: React.SFC<InjectedFormProps<UserModel>> = (props) => (
   <form onSubmit={props.handleSubmit}>
     <section>
       <h1>Profile</h1>
@@ -40,7 +39,4 @@ const AccountSettingsForm: React.FC<InjectedFormProps<UserModel>> = (props) => (
   </form>
 );
 
-export default reduxForm<UserModel>({
-  form: 'accountSettings',
-  validate: validate
-})(AccountSettingsForm);
+export default AccountSettingsForm;

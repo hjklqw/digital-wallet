@@ -19,12 +19,17 @@ function userReducer(state: UserState = initialState, action: Action): UserState
         isLoading: true
       };
     case Constants.FETCH_USER_SUCCESS:
-    case Constants.CREATE_USER_SUCCESS:
       return {
         ...state,
         isLoading: false,
         user: action.payload.user,
         wallet: action.payload.wallet,
+        error: null
+      };
+    case Constants.CREATE_USER_SUCCESS:
+      return {
+        ...state,
+        isLoading: true,
         error: null
       };
     case Constants.UPDATE_USER_SUCCESS:

@@ -47,7 +47,7 @@ type Props = {
   onLogout: (event: any) => void
 };
 
-const MainLayout: React.FC<Props> = ({ isLoggedIn, onLogout, children }) => (
+const MainLayout: React.SFC<Props> = ({ isLoggedIn, onLogout, children }) => (
   <div className="main-layout">
 
     <header>
