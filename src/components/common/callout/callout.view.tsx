@@ -25,7 +25,7 @@ function getClassNameFromType(type: CalloutType) {
   return classNameWithCaps.toLowerCase();
 }
 
-type Props = {
+export type Props = {
   message: string,
   type: CalloutType
 };

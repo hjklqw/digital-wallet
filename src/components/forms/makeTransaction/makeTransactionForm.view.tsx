@@ -1,9 +1,9 @@
 import React from 'react';
 import { Field, InjectedFormProps } from 'redux-form';
 
-import InputWithError from '../../common/inputWithError';
-import RadioGroupWithError from '../../common/radioGroupWithError';
-import { RadioOptionProps } from '../../common/radioGroupWithError/radioGroupWithError.view';
+import InputWithError from '../customFields/inputWithError';
+import RadioGroupWithError from '../customFields/radioGroupWithError';
+import { RadioOptionProps } from '../customFields/radioGroupWithError/radioGroupWithError.view';
 import { TransactionType } from '../../../models/transactionType.enum';
 import { TransactionModel } from '../../../models/transaction.model';
 import { FeeModel } from '../../../models/fee.model';

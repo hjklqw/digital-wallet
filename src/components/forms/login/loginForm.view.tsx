@@ -4,7 +4,7 @@ import { Field, InjectedFormProps } from 'redux-form';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
-import InputWithError from '../../common/inputWithError';
+import InputWithError from '../customFields/inputWithError';
 import { LoginFormModel } from './loginForm.model';
 
 export type Props = {

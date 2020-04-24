@@ -60,9 +60,7 @@
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-typescript": "^7.9.0",
     "@types/jest": "^24.9.1",
-    "babel-jest": "^25.4.0",
     "enzyme-adapter-react-16": "^1.15.2",
-    "jest": "^25.4.0",
     "jest-transform-css": "^2.0.0",
     "ts-jest": "^25.4.0"
   }

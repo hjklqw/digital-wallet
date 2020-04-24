@@ -1,18 +1,16 @@
 import React from 'react';
 import './radioGroupWithError.scss';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import FieldError, { FieldErrorProps } from '../fieldError';
 
 export type RadioOptionProps = {
   label: string,
   value: string
 };
 
-type Props = {
+type Props = FieldErrorProps & {
   input: any,
-  options: RadioOptionProps[],
-  meta: { touched: boolean, error: string }
+  options: RadioOptionProps[]
 }
 
 const RadioGroupWithError = (props: Props) => (
@@ -25,11 +23,7 @@ const RadioGroupWithError = (props: Props) => (
         </label>
       )}
     </div>
-    {(props.meta.touched && props.meta.error) &&
-      <span className="form-input-error">
-        <FontAwesomeIcon icon={faExclamationCircle} />
-        {props.meta.error}
-      </span>}
+    <FieldError meta={props.meta} />
   </>
 );
 

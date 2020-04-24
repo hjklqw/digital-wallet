@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field, InjectedFormProps } from 'redux-form';
 
-import InputWithError from '../../common/inputWithError';
+import InputWithError from '../customFields/inputWithError';
 import { UserModel } from '../../../models/user.model';
 
 const AccountSettingsForm: React.SFC<InjectedFormProps<UserModel>> = (props) => (
