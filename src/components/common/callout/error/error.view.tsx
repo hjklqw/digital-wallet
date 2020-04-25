@@ -1,7 +1,7 @@
 import React from 'react';
 import Callout, { CalloutType } from '../callout.view';
 
-type Props = {
+export type Props = {
   error: Error,
   prefixText?: string,
   suffixText?: string

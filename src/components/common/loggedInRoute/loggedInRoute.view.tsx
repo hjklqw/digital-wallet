@@ -6,6 +6,7 @@ type Props = {
   isLoggedIn: boolean,
   component: React.ComponentType<any>
 };
+
 const LoggedInRoute: React.SFC<Props> = ({ component: Component, isLoggedIn, ...rest }) => {
   const renderFunc = (props: any) => isLoggedIn ?
     <Component {...props} /> :
