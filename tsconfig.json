@@ -20,7 +20,7 @@
     "jsx": "react"
   },
   "include": [
-    "src"
+    "src", "cypress/integration/init.spec.js"
   ],
   "exclude": ["node_modules", "**/*.test.ts"]
 }
