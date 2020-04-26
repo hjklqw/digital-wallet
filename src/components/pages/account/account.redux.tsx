@@ -12,10 +12,10 @@ import { UserModel } from '../../../models/user.model';
 const ConnectedAccountPage = () => {
   const userState: UserState = useSelector((state: AppState) => state.user, shallowEqual);
   if (userState.isLoading) {
-    return <Loader />
+    return <Loader />;
   }
   if (userState.error) {
-    return <ErrorCallout error={userState.error} />
+    return <ErrorCallout error={userState.error} />;
   }
   return <AccountPage customer={userState.user as UserModel} />;
 };

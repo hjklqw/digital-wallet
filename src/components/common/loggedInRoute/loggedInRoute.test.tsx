@@ -10,7 +10,7 @@ jest.mock('react-redux', () => ({
   useSelector: jest.fn().mockReturnValueOnce(null).mockReturnValueOnce({})
 }));
 
-describe.only('LoggedInRoute', () => {
+describe('LoggedInRoute', () => {
 
   describe('Container', () => {
   

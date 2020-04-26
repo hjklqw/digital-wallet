@@ -7,7 +7,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faWallet, faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { faUserCircle, faEdit } from '@fortawesome/free-regular-svg-icons';
 
-import * as Routes from '../../assets/route.constants';
+import * as Routes from '../../../assets/route.constants';
 import { useLocation } from 'react-router-dom';
 
 type FooterLinkProps = {
@@ -25,7 +25,7 @@ type HeaderLinkProps = FooterLinkProps & {
   action?: (event: any) => void
 };
 
-const HeaderLink = (props: HeaderLinkProps) => {
+export const HeaderLink = (props: HeaderLinkProps) => {
   const currentRoute = useLocation().pathname.split('/')[1];
   const isActive =`/${currentRoute}` === props.href;
   const iconElem = props.icon && <FontAwesomeIcon icon={props.icon} size="lg" />;

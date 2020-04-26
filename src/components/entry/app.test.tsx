@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 import App from './app.view';
-import MainLayout from '../layout';
+import MainLayout from '../layout/main';
 
 describe('App', () => {
 

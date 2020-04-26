@@ -15,7 +15,7 @@ type ActionLinkProps = {
   icon: IconProp
 };
 
-const ActionLink = (props: ActionLinkProps) => (
+export const ActionLink = (props: ActionLinkProps) => (
   <Link to={props.route} className="action-link">
     <div className="action-link-contents">
       <FontAwesomeIcon icon={props.icon} size="2x" />

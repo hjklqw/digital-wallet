@@ -4,7 +4,7 @@ import './app.scss';
 import { Route, Switch } from 'react-router-dom';
 import * as Routes from '../../assets/route.constants';
 
-import MainLayout from '../layout';
+import MainLayout from '../layout/main';
 import LandingPage from '../pages/landing';
 import AccountPage from '../pages/account';
 import HomePage from '../pages/home';
