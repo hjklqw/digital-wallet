@@ -1,5 +1,5 @@
 import React from 'react';
-import './landing.scss';
+import './dashboard.scss';
 
 import { Link } from 'react-router-dom';
 import { TRANSACTION_HISTORY, MAKE_TRANSACTION } from '../../../assets/route.constants';
@@ -29,7 +29,7 @@ type Props = {
   walletBalance: number
 };
 
-const LandingPage = (props: Props) => {
+const DashboardPage = (props: Props) => {
   const pageDesc =
     <>
       Your current balance is: <span className="balance-text">${props.walletBalance}</span><br />
@@ -43,4 +43,4 @@ const LandingPage = (props: Props) => {
   );
 };
 
-export default LandingPage;
+export default DashboardPage;

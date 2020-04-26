@@ -65,7 +65,7 @@ const MainLayout: React.SFC<Props> = ({ isLoggedIn, onLogout, children }) => (
           {(() => isLoggedIn ?
             <>
               <HeaderLink label="My Account" href={Routes.ACCOUNT_SETTINGS} icon={faUserCircle} />
-              <HeaderLink label="Logout" href="/" icon={faSignOutAlt} action={onLogout} />
+              <HeaderLink label="Logout" href="" icon={faSignOutAlt} action={onLogout} />
             </> :
             <>
               <HeaderLink label="Login" href={Routes.LOGIN} icon={faSignInAlt} />

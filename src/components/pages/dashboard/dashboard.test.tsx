@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { shallow, ShallowWrapper } from 'enzyme';
-import LandingPageContainer from './landing.redux';
-import LandingPageView, { ActionLink } from './landing.view';
+import DashboardPageContainer from './dashboard.redux';
+import DashboardPageView, { ActionLink } from './dashboard.view';
 import RegisteredPageLayout from '../../layout/registeredPage';
 import { UserModel } from '../../../models/user.model';
 import { UserState } from '../../../reducers/user.state';
@@ -16,7 +16,7 @@ jest.mock('react-redux', () => ({
 }));
 const mockSelector = useSelector as jest.Mock;
 
-describe('LandingPage', () => {
+describe('DashboardPage', () => {
 
   let wrapper: ShallowWrapper;
   const customer: UserModel = {
@@ -35,7 +35,7 @@ describe('LandingPage', () => {
   describe('Container', () => {
 
     function createWrapper() {
-      wrapper = shallow(<LandingPageContainer />);
+      wrapper = shallow(<DashboardPageContainer />);
     }
 
     it('should render a loader and not the page view if the state is loading', () => {
@@ -48,7 +48,7 @@ describe('LandingPage', () => {
       mockSelector.mockReturnValueOnce(state);
       createWrapper();
       expect(wrapper.find(Loader)).toHaveLength(1);
-      expect(wrapper.find(LandingPageView)).toHaveLength(0);
+      expect(wrapper.find(DashboardPageView)).toHaveLength(0);
     });
 
     it('should render an error and not the page view if the state has an error', () => {
@@ -61,7 +61,7 @@ describe('LandingPage', () => {
       mockSelector.mockReturnValueOnce(state);
       createWrapper();
       expect(wrapper.find(ErrorCallout)).toHaveLength(1);
-      expect(wrapper.find(LandingPageView)).toHaveLength(0);
+      expect(wrapper.find(DashboardPageView)).toHaveLength(0);
     });
 
     it('should otherwise render the page with the customer prop as the state\'s user', () => {
@@ -73,7 +73,7 @@ describe('LandingPage', () => {
       };
       mockSelector.mockReturnValueOnce(state);
       createWrapper();
-      const page = wrapper.find(LandingPageView);
+      const page = wrapper.find(DashboardPageView);
       expect(page).toHaveLength(1);
       expect(page.prop('customerName')).toBe(state.user?.name);
       expect(page.prop('walletBalance')).toBe(state.wallet?.balance);
@@ -83,7 +83,7 @@ describe('LandingPage', () => {
   describe('View', () => {
 
     beforeEach(() => {
-      wrapper = shallow(<LandingPageView customerName={customer.name} walletBalance={wallet.balance} />);
+      wrapper = shallow(<DashboardPageView customerName={customer.name} walletBalance={wallet.balance} />);
     });
   
     it('should render', () => {

@@ -7,9 +7,9 @@ import { WalletModel } from '../../../models/wallet.model';
 
 import Loader from '../../common/loader';
 import ErrorCallout from '../../common/callout/error';
-import LandingPage from './landing.view';
+import DashboardPage from './dashboard.view';
 
-const ConnectedLandingPage = () => {
+const ConnectedDashboardPage = () => {
   const userState: UserState = useSelector((state: AppState) => state.user, shallowEqual);
   if (userState.isLoading) {
     return <Loader />
@@ -20,9 +20,9 @@ const ConnectedLandingPage = () => {
   if (userState.user == null) {
     return <ErrorCallout error={new Error("Something went wrong. Please refresh the page.")} />
   }
-  return <LandingPage
+  return <DashboardPage
     customerName={userState.user.name}
     walletBalance={(userState.wallet as WalletModel).balance} />;
 };
 
-export default ConnectedLandingPage;
+export default ConnectedDashboardPage;

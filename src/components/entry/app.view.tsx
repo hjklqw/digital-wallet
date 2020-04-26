@@ -5,7 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 import * as Routes from '../../assets/route.constants';
 
 import MainLayout from '../layout/main';
-import LandingPage from '../pages/landing';
+import DashboardPage from '../pages/dashboard';
 import AccountPage from '../pages/account';
 import HomePage from '../pages/home';
 import FakePage from '../pages/fake';
@@ -21,7 +21,7 @@ const App = () => (
       <Route exact path="/" component={HomePage} />
       <Route path={Routes.LOGIN} component={LoginPage} />
       <Route path={Routes.REGISTER} component={RegisterPage} />
-      <LoggedInRoute exact path={Routes.DASHBOARD} component={LandingPage} />
+      <LoggedInRoute exact path={Routes.DASHBOARD} component={DashboardPage} />
       <LoggedInRoute path={Routes.ACCOUNT_SETTINGS} component={AccountPage} />
       <LoggedInRoute path={Routes.TRANSACTION_HISTORY} component={TransactionHistoryPage} />
       <LoggedInRoute path={Routes.MAKE_TRANSACTION} component={MakeTransactionPage} />

@@ -6,14 +6,17 @@ import Callout from '../../common/callout';
 import { CalloutType } from '../../common/callout/callout.view';
 
 export type LoginPageStateProps = {
-  justRegistered: boolean
+  justRegistered?: boolean,
+  justLoggedOut?: boolean
 };
 
 const LoginPage = ({ location }: RouteComponentProps<{}, {}, LoginPageStateProps>) => {
-  const justRegistered: boolean = location.state?.justRegistered;
+  const justRegistered: boolean = location.state?.justRegistered || false;
+  const justLoggedOut: boolean = location.state?.justLoggedOut || false;
   return (
     <NormalPageLayout>
       {justRegistered && <Callout message="Registration successful. Please log in." type={CalloutType.Info} />}
+      {justLoggedOut && <Callout message="You have successfully logged out." type={CalloutType.Info} />}
       <LoginForm />
     </NormalPageLayout>
   );
