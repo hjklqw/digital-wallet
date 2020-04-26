@@ -12,6 +12,12 @@ jest.mock('react-redux', () => ({
   useDispatch: jest.fn(() => mockDispatch)
 }));
 
+jest.mock('react-router-dom', () => ({
+  useHistory: () => ({
+    push: jest.fn()
+  })
+}));
+
 describe('MainLayout', () => {
   let wrapper: ShallowWrapper;
 

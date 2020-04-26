@@ -1,11 +1,14 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { AppState } from '../../../reducers/app.state';
-import MainLayout from './mainLayout.view';
-import { logoutUser } from '../../../actions/user.actions';
+
 import { useHistory } from 'react-router-dom';
-import { LoginPageStateProps } from '../../pages/login/login.view';
 import { LOGIN as LOGIN_ROUTE } from '../../../assets/route.constants';
+
+import { AppState } from '../../../reducers/app.state';
+import { logoutUser } from '../../../actions/user.actions';
+import { LoginPageStateProps } from '../../pages/login/login.view';
+
+import MainLayout from './mainLayout.view';
 
 const ConnectedMainLayout: React.SFC = (props) => {
   const isLoggedIn = useSelector((state: AppState) => (state.user.user != null));
