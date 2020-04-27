@@ -1,6 +1,4 @@
-An MVP of a Digital Wallet/Online banking system, created in around three days.
-
-This project was made for the purpose of sharing code style and organization rather than being an actual app for use, and thus uses a fake database.
+An MVP of a Digital Wallet/Online banking system. This project was made for the purpose of sharing code style and organization rather than being an actual app for use, and thus uses a fake database.
 
 ## Run
 
@@ -44,7 +42,7 @@ This project was made for the purpose of sharing code style and organization rat
 ## Existing data
 
 **Username**: user1  
-**Password**: user1
+**Password**: 123456789
 
 Has three transactions, all of which have randomly assigned numbers. For accurate transaction values, create a new transaction.
 

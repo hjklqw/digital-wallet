@@ -1,4 +1,5 @@
 import React from 'react';
+import './accountSettingsForm.scss';
 import { Field, InjectedFormProps } from 'redux-form';
 
 import InputWithError from '../customFields/inputWithError';
@@ -19,6 +20,7 @@ const AccountSettingsForm: React.SFC<InjectedFormProps<UserModel>> = (props) => 
     </section>
     <section>
       <h1>Account</h1>
+      {props.initialValues && <span className="credentials-message">Please re-enter your credentials to save changes.</span>}
       <div>
         <label htmlFor="username">Username</label>
         <Field name="username" component={InputWithError} type="text" />

@@ -16,7 +16,7 @@ const user1: UserModel = {
   name: 'User 1',
   email: 'user1@email.com',
   username: 'user1',
-  password: 'user1'
+  password: '123456789'
 };
 
 const transaction1: TransactionModel = {

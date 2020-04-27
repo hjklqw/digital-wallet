@@ -31,7 +31,6 @@
     "redux": "^4.0.5",
     "redux-form": "^8.3.5",
     "redux-thunk": "^2.3.0",
-    "save-dev": "0.0.1-security",
     "typescript": "^3.7.5"
   },
   "scripts": {
@@ -64,6 +63,7 @@
     "@types/jest": "^24.9.1",
     "cypress": "^4.4.1",
     "enzyme-adapter-react-16": "^1.15.2",
+    "jest-cli": "^25.4.0",
     "jest-transform-css": "^2.0.0",
     "jsdom": "16.2.2",
     "jsdom-global": "3.0.2",

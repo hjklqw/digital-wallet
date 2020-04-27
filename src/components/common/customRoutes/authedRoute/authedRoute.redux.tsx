@@ -1,7 +1,7 @@
 import React from 'react'
 import { RouteProps } from 'react-router-dom';
 import AuthedRoute from './authedRoute.view';
-import { useUserState } from '../utils';
+import { useUserState } from '../../hooks';
 
 const ConnectedAuthedRoute: React.SFC<RouteProps> = (props: any) => {
   const isLoggedIn = useUserState();

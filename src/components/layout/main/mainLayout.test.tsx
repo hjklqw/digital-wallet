@@ -6,7 +6,6 @@ import MainLayoutView, { HeaderLink } from './mainLayout.view';
 import * as Routes from '../../../assets/route.constants';
 
 jest.mock('react-redux', () => ({
-  useSelector: jest.fn().mockReturnValueOnce(null).mockReturnValue({}),
   useDispatch: jest.fn()
 }));
 
@@ -18,21 +17,6 @@ jest.mock('react-router-dom', () => ({
 
 describe('MainLayout', () => {
   let wrapper: ShallowWrapper;
-
-  describe('Container', () => {
-
-    beforeEach(() => {
-      wrapper = shallow(<MainLayoutContainer />);
-    });
-
-    it('should determine that the user is not logged in if it\'s null', () => {
-      expect(wrapper.find(MainLayoutView).prop('isLoggedIn')).toBeFalsy();
-    });
-
-    it('should determine that the user is logged in if it\'s not null', () => {
-      expect(wrapper.find(MainLayoutView).prop('isLoggedIn')).toBeTruthy();
-    });
-  });
 
    describe('View', () => {
 

@@ -43,6 +43,7 @@ describe('DashboardPage', () => {
         user: null,
         wallet: null,
         isLoading: true,
+        hasLoaded: false,
         error: null
       };
       mockSelector.mockReturnValueOnce(state);
@@ -56,6 +57,7 @@ describe('DashboardPage', () => {
         user: null,
         wallet: null,
         isLoading: false,
+        hasLoaded: true,
         error: new Error()
       };
       mockSelector.mockReturnValueOnce(state);
@@ -69,6 +71,7 @@ describe('DashboardPage', () => {
         user: customer,
         wallet: wallet,
         isLoading: false,
+        hasLoaded: true,
         error: null
       };
       mockSelector.mockReturnValueOnce(state);

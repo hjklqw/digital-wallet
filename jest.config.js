@@ -76,7 +76,9 @@ module.exports = {
   ],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
-  // moduleNameMapper: {},
+  moduleNameMapper: {
+    "\\.(css|scss)$": "<rootDir>/src/assets/empty-module.js"
+  },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
   // modulePathIgnorePatterns: [],
@@ -166,8 +168,7 @@ module.exports = {
   // A map from regular expressions to paths to transformers
   transform: {
     '^.+\\.js$': 'babel-jest',
-    '^.+\\.tsx?$': 'ts-jest',
-    '.+\\.(css|styl|less|sass|scss)$': 'jest-transform-css'
+    '^.+\\.tsx?$': 'ts-jest'
   },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
