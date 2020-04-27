@@ -1,8 +1,54 @@
 .hp-section {
-  padding: 1em;
+  padding: 2em 20vw;
   box-sizing: border-box;
+
+  &:nth-child(even) {
+    text-align: right;
+  }
 
   &.default {
     background: white;
+  }
+
+  &.highlight {
+    background: #e8698d;
+    font-size: 1.2em;
+  }
+
+  &.quiet {
+    text-align: center;
+  }
+
+  button {
+    margin-top: 1em;
+
+    &.highlight {
+      background: #e8698d;
+      color: white;
+    }
+
+    &.dark-highlight {
+      background: #677105;
+      color: white;
+    }
+  }
+
+  .showcase {
+    text-align: center;
+  }
+
+  .circled-icon {
+    display: inline-block;
+    background: white;
+    font-size: 5em;
+    margin: 1rem;
+    width: 2em;
+    height: 2em;
+    text-align: center;
+    border-radius: 50%;
+
+    svg {
+      margin-top: 0.5em;
+    }
   }
 }

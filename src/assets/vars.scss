@@ -10,6 +10,13 @@ $almost-white: #eaeaea;
   background: $highlight-color;
 }
 
+@mixin side-bar {
+  display: block;
+  width: 5px;
+  height: 100%;
+  background: $highlight-color;
+}
+
 @mixin fake-bold($amount, $color, $blur: 0) {
   text-shadow:
     $amount $amount $blur $color,

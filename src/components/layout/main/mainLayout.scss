@@ -8,6 +8,7 @@
   header {
     background: $almost-black;
     display: flex;
+    position: relative;
 
     .header-logo {
       color: white;
@@ -57,34 +58,16 @@
   padding: 2em 0 0;
   cursor: pointer;
 
-  a {
-    color: inherit;
-  }
-
   svg {
     margin-right: 10px;
   }
 
-  &::after {
-    @include bottom-bar;
-    content: "";
-    width: 0%;
-    margin-top: 1.1rem;
-  }
-
   &.active {
     font-weight: bold;
-    &::after {
-      width: 100%;
-    }
   }
 
   &:not(.active):hover {
     @include fake-bold(0.25px, white, 0.1px);
-    &::after {
-      transition: all 0.35s;
-      width: 100%;
-    }
   }
 }
 
@@ -95,5 +78,99 @@
 
   &:hover {
     @include fake-bold(0.2px, gray, 0.2px);
+  }
+}
+
+#menu-button, #menu-button-checkbox {
+  display: none;
+}
+
+@media all and (max-width: 940px) {
+  .header-logo .header-link-label {
+    display: none;
+  }
+}
+
+@media all and (min-width: 751px) {
+  .header-link {
+
+    &::after {
+      @include bottom-bar;
+      content: "";
+      width: 0%;
+      margin-top: 1.1rem;
+    }
+
+    &.active::after {
+      width: 100%;
+    }
+
+    &:not(.active):hover::after {
+      transition: all 0.35s;
+      width: 100%;
+    }
+  }
+}
+
+$link-height: 40px;
+
+@media all and (max-width: 700px) {
+  header {
+    padding-bottom: 0.5em;
+  }
+
+  #menu-button {
+    display: block;
+    color: white;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    font-size: 2.5em;
+    cursor: pointer;
+  }
+
+  #menu-button-checkbox:checked + .header-links {
+    display: block !important;
+  }
+
+  .header-links {
+    display: none !important;
+    position: absolute;
+    width: 200px;
+    max-width: 80vw;
+    right: 0;
+    top: 4.5em;
+    height: 240px;
+    z-index: 10;
+    background: $almost-black;
+    padding: 1em 0;
+
+    .header-link {
+      display: flex;
+      padding: 0;
+      margin: 0;
+      height: $link-height;
+
+      .header-link-label, svg {
+        padding-top: 0.5em;
+      }
+      
+      &::before {
+        @include side-bar;
+        content: "";
+        margin-right: 1em;
+        height: 0;
+        vertical-align: middle;
+      }
+
+      &.active::before {
+        height: $link-height;
+      }
+
+      &:not(.active):hover::before {
+        transition: all 0.35s;
+        height: $link-height;
+      }
+    }
   }
 }

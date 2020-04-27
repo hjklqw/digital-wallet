@@ -39,33 +39,6 @@ form {
     }
   }
 
-  button {
-    background: white;
-    border: 1px solid #bbbbbb;
-    padding: 0.8em;
-    font-size: 0.9em;
-    margin-right: 0.5em;
-
-    &[disabled] {
-      background: #d8d8d8;
-    }
-
-    &[type="submit"] {
-      background: $dark-emphasis-color;
-      border-color: #727b1a;
-      color: white;
-      font-weight: bold;
-
-      &[disabled] {
-        background: gray;
-      }
-    }
-
-    svg {
-      margin-right: 0.5em;
-    }
-  }
-
   .form-input-error {
     color: #b50c0c;
     font-size: 0.8em;
@@ -73,5 +46,32 @@ form {
     svg {
       margin-right: 0.3em;
     }
+  }
+}
+
+button {
+  background: white;
+  border: 1px solid #bbbbbb;
+  padding: 0.8em;
+  font-size: 0.9em;
+  margin-right: 0.5em;
+
+  &[disabled] {
+    background: #d8d8d8;
+  }
+
+  &[type="submit"] {
+    background: $dark-emphasis-color;
+    border-color: #727b1a;
+    color: white;
+    font-weight: bold;
+
+    &[disabled] {
+      background: gray;
+    }
+  }
+
+  svg {
+    margin-right: 0.5em;
   }
 }

@@ -4,7 +4,7 @@ import './mainLayout.scss';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faWallet, faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faWallet, faSignInAlt, faSignOutAlt, faBars } from '@fortawesome/free-solid-svg-icons';
 import { faUserCircle, faEdit } from '@fortawesome/free-regular-svg-icons';
 
 import * as Routes from '../../../assets/route.constants';
@@ -33,7 +33,7 @@ export const HeaderLink = (props: HeaderLinkProps) => {
   const contents =
     <>
       {!props.iconAfterLabel && iconElem}
-      {props.label}
+      <span className="header-link-label">{props.label}</span>
       {props.iconAfterLabel && iconElem}
     </>;
   if (props.action == null) {
@@ -54,6 +54,8 @@ const MainLayout: React.SFC<Props> = ({ isLoggedIn, onLogout, children }) => (
       <section className="header-logo">
         <HeaderLink label="Digital Wallet" href="/" icon={faWallet} iconAfterLabel={true} />
       </section>
+      <label id="menu-button" htmlFor="menu-button-checkbox"><FontAwesomeIcon icon={faBars} /></label>
+      <input id="menu-button-checkbox" type="checkbox" />
       <section className="header-links">
         <nav>
           <HeaderLink label="My Wallet" href={Routes.DASHBOARD} />
