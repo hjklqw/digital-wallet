@@ -9,7 +9,7 @@ import { FeeModel } from '../../../models/fee.model';
 import { FeeState } from '../../../reducers/fee.state';
 import database from '../../../assets/database';
 import RegisteredPageLayout from '../../layout/registeredPage';
-import MakeTransactionForm from '../../forms/makeTransaction/makeTransactionForm.view';
+import MakeTransactionForm from '../../forms/makeTransaction';
 
 jest.mock('react-redux', () => ({
   useSelector: jest.fn(),

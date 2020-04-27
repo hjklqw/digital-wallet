@@ -23,6 +23,7 @@ This project was made for the purpose of sharing code style and organization rat
 - Redux-Form
 - React-Router
 - Typescript
+- SASS
 - Jest & Enzyme (Unit tests)
 - Cypress (Integration tests)
 

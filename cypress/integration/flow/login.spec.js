@@ -5,15 +5,19 @@ import { Flow, expectRoute } from './util';
 const HEADER_LINKS_LOGIN_SECTION = 'section.header-links nav:last-child';
 const LOGIN_BUTTON_SELECTOR = HEADER_LINKS_LOGIN_SECTION + ' a:first-child';
 
-const flow = new Flow([
+export const LOGIN_COMPLETE_STEP_INDEX = 2;
+
+export const flow = new Flow([
   () => cy.visit('/'),
   () => cy.get(LOGIN_BUTTON_SELECTOR).click(),
   () => {
+    cy.wait(1000);
     const formInputs = cy.get('form input[type="text"]');
     formInputs.get('[name="username"]').type(database.user[0].username);
-    formInputs.get('[name="password"]').type(database.user[0].password).type('{enter}');
+    formInputs.get('[name="password"]').type(database.user[0].password);
+    cy.get('form button[type="submit"]').click();
   },
-  () => {},
+  () => cy.wait(2000),
   () => {
     cy.wait(2000);
     cy.get(HEADER_LINKS_LOGIN_SECTION + ' > div').click();
@@ -44,6 +48,5 @@ context('Login Flow', () => {
   it('brings me back to the login page when I click Logout', () => {
     expectRoute(Routes.LOGIN);
   });
-
 
 });

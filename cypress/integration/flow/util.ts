@@ -1,3 +1,5 @@
+/// <reference types="cypress" />
+
 export type StepFunction = () => void;
 
 export class Flow {
@@ -18,6 +20,12 @@ export class Flow {
     for (let i = 0; i <= this.currentStepIndex; i++) {
       this.steps[i]();
     }
+  }
+
+  // To be used independently
+  executeUntilStep(index: number) {
+    this.currentStepIndex = index;
+    this.executeSteps();
   }
 
 }

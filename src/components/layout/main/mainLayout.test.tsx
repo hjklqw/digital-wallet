@@ -3,13 +3,11 @@ import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 import MainLayoutContainer from './mainLayout.redux';
 import MainLayoutView, { HeaderLink } from './mainLayout.view';
-import { logoutUser } from '../../../actions/user.actions';
 import * as Routes from '../../../assets/route.constants';
 
-const mockDispatch = jest.fn();
 jest.mock('react-redux', () => ({
   useSelector: jest.fn().mockReturnValueOnce(null).mockReturnValue({}),
-  useDispatch: jest.fn(() => mockDispatch)
+  useDispatch: jest.fn()
 }));
 
 jest.mock('react-router-dom', () => ({
@@ -33,12 +31,6 @@ describe('MainLayout', () => {
 
     it('should determine that the user is logged in if it\'s not null', () => {
       expect(wrapper.find(MainLayoutView).prop('isLoggedIn')).toBeTruthy();
-    });
-
-    it('should dispatch the logout action on logout', () => {
-      const logoutFunc = wrapper.find(MainLayoutView).prop('onLogout');
-      logoutFunc({});
-      expect(mockDispatch).toHaveBeenCalledWith(logoutUser());
     });
   });
 

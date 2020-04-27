@@ -5,10 +5,36 @@ import { UserModel } from '../models/user.model';
 import { LoginFormModel } from '../components/forms/login/loginForm.model';
 import { WalletModel } from '../models/wallet.model';
 
+const USER_TOKEN_NAME = 'userToken';
+interface UserTokenModel {
+  id: number
+};
+
 export async function loginUser(postData: LoginFormModel) {
   function res() {
     const user = database.user.find(u => (u.username === postData.username) && (u.password === postData.password));
     if (user == null) return new Error(`Invalid login credentials.`);
+    const wallet = database.wallet.find(w => w.customerId === user.id);
+    if (wallet == null) return new Error(`Unable to find associated wallet.`);
+    const retVal = {
+      user: user,
+      wallet: wallet
+    };
+    localStorage.setItem(USER_TOKEN_NAME, JSON.stringify(<UserTokenModel>{ id: user.id }));
+    return retVal;
+  }
+  return await load<actions.UserLoginResponse>(actions.loginUser, actions.loginUserSuccess, actions.loginUserFailure, res);
+}
+
+export async function fetchUserFromToken() {
+  function res() {
+    const storageItem = localStorage.getItem(USER_TOKEN_NAME);
+    if (storageItem == null) {
+      return null;
+    }
+    const token: UserTokenModel = JSON.parse(storageItem);
+    const user = database.user.find(u => u.id === token.id);
+    if (user == null) return new Error(`Unable to find user with ID ${token.id}.`);
     const wallet = database.wallet.find(w => w.customerId === user.id);
     if (wallet == null) return new Error(`Unable to find associated wallet.`);
     return {
@@ -16,7 +42,7 @@ export async function loginUser(postData: LoginFormModel) {
       wallet: wallet
     };
   }
-  return await load<actions.UserLoginResponse>(actions.fetchUser, actions.fetchUserSuccess, actions.fetchUserFailure, res);
+  return await load<actions.UserLoginResponse | null>(actions.fetchUser, actions.fetchUserSuccess, actions.fetchUserFailure, res);
 }
 
 export async function createUser(postData: UserModel) {
@@ -58,4 +84,9 @@ export async function updateUser(postData: UserModel) {
     return new Error('Invalid data. User was not created');
   }
   return await load<UserModel>(actions.updateUser, actions.updateUserSuccess, actions.updateUserFailure, res);
+}
+
+export function logoutUser() {
+  localStorage.removeItem(USER_TOKEN_NAME);
+  return (dispatch: Function) => dispatch(actions.logoutUser());
 }

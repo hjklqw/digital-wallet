@@ -8,6 +8,17 @@ export type UserLoginResponse = {
   wallet: WalletModel
 };
 
+export function loginUser(): Action {
+  return { type: Constants.LOGIN_USER };
+};
+
+export function loginUserSuccess(data: UserLoginResponse): Action {
+  return { type: Constants.LOGIN_USER_SUCCESS, payload: data };
+};
+export function loginUserFailure(error: Error): Action {
+  return { type: Constants.LOGIN_USER_FAILURE, payload: error };
+};
+
 export function fetchUser(): Action {
   return { type: Constants.FETCH_USER };
 };

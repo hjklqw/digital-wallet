@@ -5,5 +5,6 @@ export interface UserState {
   user: UserModel | null,
   wallet: WalletModel | null,
   isLoading: boolean,
+  hasLoaded: boolean,
   error: Error | null
 };
