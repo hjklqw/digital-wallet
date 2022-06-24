@@ -65,7 +65,7 @@
     "enzyme-adapter-react-16": "^1.15.2",
     "jest-cli": "^25.4.0",
     "jest-transform-css": "^2.0.0",
-    "jsdom": "16.2.2",
+    "jsdom": "16.5.0",
     "jsdom-global": "3.0.2",
     "ts-jest": "^25.4.0"
   }
