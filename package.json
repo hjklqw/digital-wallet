@@ -61,7 +61,7 @@
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-typescript": "^7.9.0",
     "@types/jest": "^24.9.1",
-    "cypress": "^4.4.1",
+    "cypress": "^4.12.1",
     "enzyme-adapter-react-16": "^1.15.2",
     "jest-cli": "^25.4.0",
     "jest-transform-css": "^2.0.0",
